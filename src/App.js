@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Images from "./compnents/Images";
 import mountains from "./mountains.json";
 import Navabr from "./compnents/Navbar";
+import Header from "./compnents/Header";
+
 import "./app.css";
 
 class App extends Component {
@@ -21,6 +23,7 @@ class App extends Component {
     return (
       <div>
         <Navabr />
+        <Header />
         <div className="imgBox">
           {this.state.mountains.map(mountain => (
             <Images
