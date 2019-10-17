@@ -9,13 +9,26 @@ class App extends Component {
     mountains
   };
 
+  handleImageClick = (id, beenClicked) => {
+    // const mountains = this.state.mountains.filter(
+    //   mountain => mountain.beenClicked !== beenClicked
+    // );
+    // this.setState({ mountains });
+    console.log(`${id} : ${beenClicked}`);
+  };
+
   render() {
     return (
       <div>
         <Navabr />
         <div className="imgBox">
           {this.state.mountains.map(mountain => (
-            <Images image={mountain.image} />
+            <Images
+              beenClicked={mountain.beenClicked}
+              id={mountain.id}
+              image={mountain.image}
+              handleImageClick={this.handleImageClick}
+            />
           ))}
         </div>
       </div>

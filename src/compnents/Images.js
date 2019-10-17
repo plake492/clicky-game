@@ -1,13 +1,17 @@
 import React from "react";
 
-export default function Images(props) {
+function Images(props) {
+  // console.log(props.id);
   return (
     <div className="imgBox__pic">
       <img
-        style={{ width: "250px", height: "250px" }}
+        className="imgBox__pic--singleImg"
         src={props.image}
-        alt=""
+        alt={props.id}
+        onClick={props.handleImageClick.bind(this, props.id, props.beenClicked)}
       ></img>
     </div>
   );
 }
+
+export default Images;
