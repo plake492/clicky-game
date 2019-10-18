@@ -8,7 +8,7 @@ function Images(props) {
         className="imgBox__pic--singleImg"
         src={props.image}
         alt={props.id}
-        onClick={props.handleImageClick.bind(this, props.id, props.beenClicked)}
+        onClick={() => props.handleImageClick(props.id)}
       ></img>
     </div>
   );

@@ -1,21 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Navbar extends Component {
-  render() {
-    return (
-      <div className="nav">
-        <div className="nav__title">
-          <h2>Clicky Game</h2>
-        </div>
-        <div className="nav__title">
-          <h2>You Guessed Correctly!</h2>
-        </div>
-        <div className="nav__title">
-          <h2>Score: 0 | Top Score: 0</h2>
-        </div>
+export default function Navbar(props) {
+  return (
+    <div className="nav">
+      <div className="nav__title">
+        <p>Clicky Game</p>
       </div>
-    );
-  }
+      <div className="nav__title">
+        <p>{props.message}</p>
+      </div>
+      <div className="nav__title">
+        <p>Score: {props.click} | Top Score: 0</p>
+      </div>
+    </div>
+  );
 }
-
-export default Navbar;
