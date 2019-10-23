@@ -10,7 +10,9 @@ export default function Navbar(props) {
         <p>{props.message}</p>
       </div>
       <div className="nav__title">
-        <p>Score: {props.click} | Top Score: 0</p>
+        <p>
+          Score: {props.click} | Top Score: {props.highScore}
+        </p>
       </div>
     </div>
   );

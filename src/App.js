@@ -6,47 +6,51 @@ import Header from "./compnents/Header";
 import "./app.css";
 
 let counter = 0;
+let highCount = 0;
+let guessedRight = false;
+let guessedWrong = false; 
 
 class App extends Component {
   state = {
     mountains,
     click: 0,
-    message: ""
+    message: "",
+    highScore: 0
   };
 
   handleImageClick = id => {
-    const index = this.state.mountains.findIndex(obj => obj.id === id);
+    const clicked = this.state.mountains.filter(obj => obj.id === id);
 
-    if (this.state.mountains[index].beenClicked === true) {
+    if (clicked[0].beenClicked === true) {
       this.setState({ message: "You already clicked that one!" });
       counter = 0;
       this.setState({ click: counter });
-      // for (let i = 0; i < this.state.mountains.length; i++) {
-      //   let newState = Object.assign({}, this.state);
-      //   newState.mountains[i].beenClicked = false;
-      //   this.setState(newState);
-      // }
-      const clickState = this.state.mountains.forEach(element => {
-        element.beenClicked = false;
+      mountains.forEach(mountain => {
+        mountain.beenClicked = false;
       });
-      console.log(clickState);
-
-      return;
     } else {
-      let newState = Object.assign({}, this.state);
-      newState.mountains[index].beenClicked = !newState.mountains[index]
-        .beenClicked;
-      this.setState(newState);
+      clicked[0].beenClicked = true;
+      this.setState({ mountains });
+      mountains.sort(() => Math.random() - 0.5);
       this.setState({ message: "You guessed correctly!" });
       counter++;
       this.setState({ click: counter });
+      if (this.state.highScore <= this.state.click) {
+        highCount++;
+        this.setState({ highScore: highCount });
+      }
+
     }
   };
 
   render() {
     return (
       <div>
-        <Navabr message={this.state.message} click={this.state.click} />
+        <Navabr
+          message={this.state.message}
+          click={this.state.click}
+          highScore={this.state.highScore}
+        />
         <Header />
         <div className="imgBox">
           {this.state.mountains.map(mountain => (
@@ -55,8 +59,11 @@ class App extends Component {
               id={mountain.id}
               image={mountain.image}
               handleImageClick={this.handleImageClick}
+              guessedRight
+              guessedWrong
             />
           ))}
+          ;
         </div>
       </div>
     );
