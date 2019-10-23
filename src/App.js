@@ -7,8 +7,6 @@ import "./app.css";
 
 let counter = 0;
 let highCount = 0;
-let guessedRight = false;
-let guessedWrong = false; 
 
 class App extends Component {
   state = {
@@ -39,7 +37,6 @@ class App extends Component {
         highCount++;
         this.setState({ highScore: highCount });
       }
-
     }
   };
 
@@ -59,8 +56,6 @@ class App extends Component {
               id={mountain.id}
               image={mountain.image}
               handleImageClick={this.handleImageClick}
-              guessedRight
-              guessedWrong
             />
           ))}
           ;
